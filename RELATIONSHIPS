@@ -1,0 +1,8 @@
+1) One to Few Relationships
+embed the data directly to document (Small amount of data set approach)
+
+2) One to Many
+Store the data seperately but then store refences to document ID's somewhere inside parent  
+
+3) One to Bajillions
+with thousands or more document , its more efficient to store refernce to the parent on child document

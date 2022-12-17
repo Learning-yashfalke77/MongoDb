@@ -1,0 +1,48 @@
+Mongo db commands
+0) mongo: to start server and initiate mongo shell
+1) db : tells us current project  database 
+2) show dbs: shows all databases
+3) use [database name] : creates one database
+4) Mongo db used BSON: Binary JSON ()
+5) show collections: (to get all connections)
+6)db.dogs.find() : to find collection
+6) --------------------------- Insert ---------------------
+db.dogs.insertOne({name: 'Charlie',  age: 3, breed: 'corgi', catFriendly: true})
+
+db.dogs.insert([{name: "Wyatt", breed: "Golden", age: 14, catFreindly: false,} , {name: "Tonya", breed: "Chihuhua", age: 17, catFreindly: true}])
+
+7) ---------------------------------- show -------------------------
+db.dogs.find({breed: 'corgi'})    //Returns cursor
+db.dogs.findOne({breed: "Golden"})  //returns object(find one object of match)
+
+8) -------------------------------------- Update -------------------------
+db.dogs.updateOne({name: "Charlie"}, {$set: {age: 4}}) here name is for finderrr and set operator is used for update
+
+If not present feild then it creates:
+db.dogs.updateOne({name: "Charlie"}, {$set: {color: "Black-White"}})
+DATA: { "_id" : ObjectId("61348b1b96da5eb3137e8483"), "name" : "Charlie", "age" : 4, "breed" : "corgi", "catFriendly" : true, "color" : "Black-White" }
+
+db.dogs.updateMany({catFreindly: false}, {$set: {isAvailable: "true"}})  //Update many
+
+$currentDate gives current Date
+db.cats.updateOne({name: "Blue Steele"}, {$currentDate: {lastModified: true}}, {$set: {age: 6}},)  
+DATA: { "_id" : ObjectId("61359114cd32ae259dd1be15"), "name" : "Blue Steele", "age" : 6, "dogFreindly" : false, "breed" : "Scotttish Fold", "lastModified" : ISODate("2021-09-06T04:00:28.278Z") }
+
+9) -------------------------------------------- Delete -------------------------------------
+db.cats.deleteOne({name: "Blue Steele"})  
+
+db.dogs.deleteMany({})  // Delets all
+
+10) ------------------------------------------------ operators ------------------------------------
+For nested objects do like that EG: 'personality.chidFreindly'
+
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+                                                                               Mongoose
+______________________________________________________________________________________________________________________________________________________________________________
+Mongoose :(ODM) Object Data Mapper / Object Document Mapper
+ODM's like Mongoose, maps document coming from a database into usual javascript objects
+provides a lot of functionality and methods
+
+for sql database (ORM) Object Relational Mapper
